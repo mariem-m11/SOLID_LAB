@@ -1,0 +1,44 @@
+@startuml
+skinparam style strictuml
+
+interface Door {
+    +lock() : void
+    +unlock() : void
+    +open() : void
+    +close() : void
+    +timeOutCallback() : void
+    +proximityCallback() : void
+}
+
+class SensingDoor implements Door {
+    -_locked : boolean
+    -_opened : boolean
+    +lock() : void
+    +unlock() : void
+    +open() : void
+    +close() : void
+    +proximityCallback() : void
+}
+
+class TimedDoor implements Door {
+    -_locked : boolean
+    -_opened : boolean
+    +lock() : void
+    +unlock() : void
+    +open() : void
+    +close() : void
+    +timeOutCallback() : void
+}
+
+class Sensor {
+    +register(Door) : void
+}
+
+class Timer {
+    +register(long, Door) : void
+}
+
+Timer -- TimedDoor
+Sensor -- SensingDoor
+
+@enduml

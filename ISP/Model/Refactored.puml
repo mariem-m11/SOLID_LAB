@@ -1,0 +1,53 @@
+@startuml
+skinparam style strictuml
+
+interface BasicDoorOperations {
+    +lock() : void
+    +unlock() : void
+    +open() : void
+    +close() : void
+}
+
+interface TimeSensitiveDoor {
+    +timeOutCallback() : void
+}
+
+interface ProximitySensitiveDoor {
+    +proximityCallback() : void
+}
+
+class SensingDoor implements BasicDoorOperations, ProximitySensitiveDoor {
+    -_locked : boolean
+    -_opened : boolean
+    +lock() : void
+    +unlock() : void
+    +open() : void
+    +close() : void
+    +proximityCallback() : void
+
+}
+
+class TimedDoor implements BasicDoorOperations, TimeSensitiveDoor {
+    -_locked : boolean
+    -_opened : boolean
+    +lock() : void
+    +unlock() : void
+    +open() : void
+    +close() : void
+    +timeOutCallback() : void
+
+}
+
+class Sensor {
+    +register(ProximitySensitiveDoor) : void
+}
+
+class Timer {
+    +register(long, TimeSensitiveDoor) : void
+}
+
+Sensor -- ProximitySensitiveDoor
+
+Timer -- TimeSensitiveDoor
+
+@enduml

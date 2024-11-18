@@ -1,0 +1,18 @@
+@startuml
+skinparam style strictuml
+
+class Car {
+    -id: String
+    -model: String
+    -brand: String
+}
+' nsn3o methode ll creation mtaa new cars?'
+class CarManager {
+    -carsDb: List<Car> 
+    +getFromDb(carId: String): Car
+    +getCarsNames(): String
+    +getBestCar(): Car
+}
+
+CarManager "1" -- "*" Car
+@enduml

@@ -1,0 +1,30 @@
+@startuml
+skinparam style strictuml
+
+interface IDuck {
+    +quack() : void
+    +swim() : void
+}
+
+class Duck implements IDuck {
+    +quack() : void
+    +swim() : void
+}
+
+class ElectronicDuck implements IDuck {
+    -_on : boolean
+    +quack() : void
+    +swim() : void
+    +turnOn() : void
+    +turnOff() : void
+}
+
+class Pool {
+    +run() : void
+    +quack(duck : IDuck) : void
+    +swim(duck : IDuck) : void
+}
+
+Pool -- IDuck
+
+@enduml

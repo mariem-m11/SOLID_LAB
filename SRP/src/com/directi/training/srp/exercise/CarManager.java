@@ -5,6 +5,9 @@ import java.util.List;
 
 public class CarManager
 {
+    
+    // Repository
+    
     private List<Car> _carsDb = Arrays
         .asList(new Car("1", "Golf III", "Volkswagen"), new Car("2", "Multipla", "Fiat"),
             new Car("3", "Megane", "Renault"));
@@ -18,6 +21,10 @@ public class CarManager
         }
         return null;
     }
+
+
+    // Service
+
 
     public String getCarsNames()
     {

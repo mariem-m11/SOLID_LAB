@@ -1,0 +1,34 @@
+@startuml
+skinparam style strictuml
+
+class Car {
+    -id: String
+    -model: String
+    -brand: String
+}
+
+class CarRepository {
+    -carsDb: List<Car>
+    +getFromDb(carId: String): Car
+}
+
+class CarService {
+   +getCarsNames(): String
+   +getBestCar(): String
+}
+
+class CarFormattor {
+    +getCarsNames(): String
+}
+
+class CarComparator {
+    +getBestCar(): Car
+}
+
+CarRepository "1" -- "*" Car 
+CarService -- CarFormattor
+CarService -- CarComparator
+CarFormattor -- CarRepository 
+CarComparator -- CarRepository
+
+@enduml

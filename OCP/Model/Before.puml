@@ -1,0 +1,21 @@
+@startuml
+skinparam style strictuml
+
+class ResourceAllocator {
+    -findFreeTimeSlot() : int
+    -findFreeSpaceSlot() : int
+    -markTimeSlotBusy(resourceId : int)
+    -markSpaceSlotBusy(resourceId : int)
+    -markTimeSlotFree(resourceId : int)
+    -markSpaceSlotFree(resourceId : int)
+    +allocate(resourceType : ResourceType) : int
+    +free(resourceType : ResourceType, resourceId : int)
+}
+
+enum ResourceType {
+    TIME_SLOT
+    SPACE_SLOT
+}
+
+ResourceAllocator -- ResourceType
+@enduml

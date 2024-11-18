@@ -2,15 +2,14 @@ package com.directi.training.isp.exercise;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-public class TimedDoor implements BasicDoorOperations, TimeSensitiveDoor
+public class SensingDoor implements Door
 {
-    private static final int TIME_OUT = 100;
     private boolean _locked;
     private boolean _opened;
 
-    public TimedDoor(Timer timer)
+    public SensingDoor(Sensor sensor)
     {
-        timer.register(TIME_OUT, this);
+        sensor.register(this);
     }
 
     @Override
@@ -42,12 +41,12 @@ public class TimedDoor implements BasicDoorOperations, TimeSensitiveDoor
     @Override
     public void timeOutCallback()
     {
-        _locked = true;
+        throw new NotImplementedException();
     }
 
     @Override
     public void proximityCallback()
     {
-        throw new NotImplementedException();
+        _opened = true;
     }
 }

@@ -1,0 +1,25 @@
+@startuml
+skinparam style strictuml
+
+class Duck {
+    +quack() : void
+    +swim() : void
+}
+
+class ElectronicDuck extends Duck {
+    -_on : boolean
+    +turnOn() : void
+    +turnOff() : void
+    +quack() : void
+    +swim() : void
+}
+
+class Pool {
+    +run() : void
+    -quack(Duck...) : void
+    -swim(Duck...) : void
+}
+
+Pool -- Duck
+
+@enduml

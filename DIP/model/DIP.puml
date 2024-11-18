@@ -1,0 +1,44 @@
+@startuml
+skinparam style strictuml
+
+interface IDataReader {
+    +read() : String
+}
+
+interface IDataWriter {
+    +write(String) : void
+}
+
+interface IEncoder {
+    +encode(String) : String
+}
+
+class EncodingModuleClient {
+    +main(args : String[]) : void
+}
+
+
+class FileDataReader implements IDataReader {
+    +read() : String
+
+}
+
+class DatabaseDataWriter implements IDataWriter {
+    +write(String) : void
+
+}
+
+class Encoder implements IEncoder {
+    +encode(String) : String
+}
+
+class EncodingModule {
+    +encodeData() : void
+}
+
+EncodingModuleClient -- EncodingModule
+EncodingModule -- IDataReader
+EncodingModule -- IDataWriter
+EncodingModule -- IEncoder
+
+@enduml
